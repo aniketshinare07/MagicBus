@@ -1,0 +1,55 @@
+
+from flask import Flask, render_template_string
+
+app = Flask(__name__)
+
+HTML = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Random Website</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            padding-top: 100px;
+        }
+        .card {
+            background: white;
+            color: #333;
+            padding: 40px;
+            border-radius: 20px;
+            width: 320px;
+            margin: auto;
+            box-shadow: 0 10px 30px #3335;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Hello, World! 🌍</h1>
+        <p>Welcome to my Python website.</p>
+        <button onclick="alert('Python is awesome! 🚀')">
+            Click Me
+        </button>
+    </div>
+</body>
+</html>
+"""
+
+@app.route("/")
+def home():
+    return render_template_string(HTML)
+
+if __name__ == "__main__":
+    app.run(debug=True)
